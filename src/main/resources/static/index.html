@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Task Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div class="ambient ambient-left"></div>
+<div class="ambient ambient-right"></div>
+
+<main class="workspace">
+    <header class="topbar">
+        <div class="brand-copy">
+            <span class="eyebrow">Compact workflow suite</span>
+            <h1>Smart Task Manager</h1>
+            <p>Premium-looking task control with a Java backend, PostgreSQL storage, and a layout designed to stay inside one screen.</p>
+        </div>
+        <div class="topbar-pills">
+            <span class="pill">Spring Boot API</span>
+            <span class="pill pill-accent">PostgreSQL Ready</span>
+        </div>
+    </header>
+
+    <section class="dashboard-grid">
+        <aside class="panel form-panel">
+            <div class="panel-head">
+                <div>
+                    <span class="eyebrow">Quick add</span>
+                    <h2>New task</h2>
+                </div>
+                <span class="panel-badge">Low scroll</span>
+            </div>
+
+            <form id="taskForm" class="task-form">
+                <label>
+                    <span>Title</span>
+                    <input id="title" name="title" type="text" maxlength="80" placeholder="Finish client dashboard" required>
+                </label>
+
+                <div class="form-row">
+                    <label>
+                        <span>Category</span>
+                        <input id="category" name="category" type="text" maxlength="40" placeholder="Work">
+                    </label>
+                    <label>
+                        <span>Priority</span>
+                        <select id="priority" name="priority">
+                            <option value="HIGH">High</option>
+                            <option value="MEDIUM" selected>Medium</option>
+                            <option value="LOW">Low</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Due date</span>
+                        <input id="dueDate" name="dueDate" type="date" required>
+                    </label>
+                    <label>
+                        <span>Minutes</span>
+                        <input id="estimatedMinutes" name="estimatedMinutes" type="number" min="15" max="720" step="15" value="30" required>
+                    </label>
+                </div>
+
+                <label>
+                    <span>Notes</span>
+                    <textarea id="notes" name="notes" rows="3" maxlength="220" placeholder="Add a short note or constraint"></textarea>
+                </label>
+
+                <button type="submit" class="primary-button">Add task</button>
+            </form>
+
+            <p id="feedback" class="feedback" aria-live="polite"></p>
+        </aside>
+
+        <section class="panel board-panel">
+            <div class="panel-head board-head">
+                <div>
+                    <span class="eyebrow">Today at a glance</span>
+                    <h2>Command center</h2>
+                </div>
+                <div class="filters" id="filters">
+                    <button class="filter active" data-filter="ALL" type="button">All</button>
+                    <button class="filter" data-filter="TODO" type="button">To do</button>
+                    <button class="filter" data-filter="IN_PROGRESS" type="button">In progress</button>
+                    <button class="filter" data-filter="DONE" type="button">Done</button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <article class="stat-card">
+                    <span class="stat-label">Active</span>
+                    <strong id="activeCount">0</strong>
+                    <small>Still on deck</small>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-label">Due today</span>
+                    <strong id="dueTodayCount">0</strong>
+                    <small>Needs attention</small>
+                </article>
+                <article class="stat-card">
+                    <span class="stat-label">Overdue</span>
+                    <strong id="overdueCount">0</strong>
+                    <small>Clear these first</small>
+                </article>
+                <article class="stat-card stat-card-highlight">
+                    <span class="stat-label">Done rate</span>
+                    <strong id="completionRate">0%</strong>
+                    <small>Momentum this cycle</small>
+                </article>
+            </div>
+
+            <div class="task-region">
+                <div class="task-toolbar">
+                    <span id="taskCountLabel">0 tasks</span>
+                    <span class="legend">Click progress to move a task forward</span>
+                </div>
+
+                <div id="taskList" class="task-list"></div>
+            </div>
+        </section>
+
+        <aside class="panel focus-panel">
+            <div class="panel-head">
+                <div>
+                    <span class="eyebrow">Recommended next</span>
+                    <h2>Focus lane</h2>
+                </div>
+            </div>
+
+            <div id="focusCard" class="focus-card"></div>
+
+            <div class="idea-block">
+                <span class="eyebrow">Premium areas to add</span>
+                <ul>
+                    <li>Reminders and notifications</li>
+                    <li>Team workspaces</li>
+                    <li>Calendar sync</li>
+                    <li>Analytics and time insights</li>
+                </ul>
+            </div>
+        </aside>
+    </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
+
