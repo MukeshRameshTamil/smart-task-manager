@@ -1,0 +1,121 @@
+/* Animated Background */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(270deg, #4facfe, #00f2fe, #43e97b);
+    background-size: 600% 600%;
+    animation: gradientMove 10s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% }
+    50% { background-position: 100% }
+    100% { background-position: 0% }
+}
+
+/* App Container */
+.app {
+    max-width: 750px;
+    margin: 50px auto;
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    color: #fff;
+}
+
+/* Title */
+h1 {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Inputs */
+.input-box input, .input-box select {
+    padding: 12px;
+    margin: 5px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    width: 28%;
+}
+
+/* Buttons */
+button {
+    padding: 12px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: #000;
+    color: #fff;
+}
+
+/* Filters */
+.filters button {
+    background: rgba(255,255,255,0.5);
+}
+
+/* Task Cards */
+.task {
+    background: rgba(255,255,255,0.3);
+    padding: 15px;
+    margin: 12px 0;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.task:hover {
+    transform: translateY(-3px);
+}
+
+/* Completed */
+.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* Buttons inside task */
+.task-buttons button {
+    margin-left: 5px;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.task-buttons .complete {
+    background: #28a745;
+    color: white;
+}
+
+.task-buttons button:last-child {
+    background: #ff4d4d;
+    color: white;
+}
+
+/* Result */
+#result {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
